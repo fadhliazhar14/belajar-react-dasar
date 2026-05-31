@@ -6,6 +6,7 @@ import ToDoList from "../todolist/ToDoList";
 import AlertButton from "../button/AlertButton";
 import MyButton from "../button/MyButton";
 import Toolbar from "../button/Toolbar";
+import SearchForm from "../form/SearchForm";
 
 createRoot(document.getElementById("root"))
     .render(
@@ -21,6 +22,8 @@ createRoot(document.getElementById("root"))
                     e.stopPropagation();
                     alert("Toolbar clicked!");
                 }} />
+
+                <SearchForm />
             </Container>
         </StrictMode>
     )
