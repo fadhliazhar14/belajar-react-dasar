@@ -12,7 +12,8 @@ export default defineConfig({
     rollupOptions: {
       input: {
         index: "index.html",
-        hello_world: "hello-world.html"
+        hello_world: "hello-world.html",
+        contact: "contact.html"
       }
     }
   }
