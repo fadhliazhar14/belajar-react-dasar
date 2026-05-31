@@ -1,3 +1,5 @@
+import "./HelloWorld.css";
+
 export default function HelloWorld() {
     const props = {
         text: "Halo, Fadhli!"
@@ -13,21 +15,14 @@ export default function HelloWorld() {
 
 function HeaderHelloWorld({ text = "Ups, lupa kasih teks" }) {
     return (
-        <h1 style={{
-            color: "red",
-            backgroundColor: "aqua"
-        }}>{text.toUpperCase()}</h1>
+        <h1 className="title">{text.toUpperCase()}</h1>
     )
 }
 
 function ParagraphHelloWorld() {
     const text = "Selamat Belajar ReactJS";
-    const style = {
-        color: "blue",
-        backgroundColor: "yellow"
-    }
 
     return (
-        <p style={style}>{text}</p>
+        <p className="content">{text}</p>
     )
 }
