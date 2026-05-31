@@ -3,6 +3,8 @@ import HelloWorld from "./HelloWorld";
 import { StrictMode } from "react";
 import Container from "./Container";
 import ToDoList from "../todolist/ToDoList";
+import AlertButton from "../button/AlertButton";
+import MyButton from "../button/MyButton";
 
 createRoot(document.getElementById("root"))
     .render(
@@ -10,6 +12,9 @@ createRoot(document.getElementById("root"))
             <Container>
                 <HelloWorld />
                 <ToDoList />
+
+                <AlertButton textLabel="Click Me!" message="Button has been clicked" />
+                <MyButton textLabel="Hit Me!" onClick={() => alert("Button has been clicked")} />
             </Container>
         </StrictMode>
     )
