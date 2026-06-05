@@ -33,7 +33,6 @@ function notesReducer(notes, action) {
 
 export default function NoteApp() {
     // Menggunakan react reducer
-
     const [notes, dispatch] = useImmerReducer(notesReducer, initialNotes);
 
     return (

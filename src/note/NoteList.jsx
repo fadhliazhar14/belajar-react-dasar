@@ -1,33 +1,34 @@
 import Note from "./Note";
-import { NoteContext, NoteDispatchContext } from "./NoteContext";
-import { useContext } from "react";
+import { NoteContext } from "./NoteContext";
+import { useContext, useMemo, useRef, useState } from "react";
 
 export default function NoteList() {
-    const note = useContext(NoteContext);
-    const dispatch = useContext(NoteDispatchContext);
+    const notes = useContext(NoteContext);
+    const [search, setSearch] = useState("");
+    const searchKeyword = useRef(null);
 
-    function handleChangeNote(note) {
-        dispatch({
-            ...note,
-            type: "CHANGE_NOTE"
-        })
+    const filteredNotes = useMemo(() => {
+        return notes.filter(note => note.text.includes(search));
+    }, [notes, search]);
+
+    function handleSearch() {
+        setSearch(searchKeyword.current.value);
     }
 
-    function handleDeleteNote(note) {
-        dispatch({
-            type: "DELETE_NOTE",
-            id: note.id
-        })
-    }
     return (
-        <ul>
-            {
-                note.map(note => (
-                    <li key={note.id}>
-                        <Note note={note} />
-                    </li>
-                ))
-            }
-        </ul>
+        <div>
+            <input placeholder="Search notes.." type="text" ref={searchKeyword} />
+            <button onClick={handleSearch}>Search</button>
+            <br />
+            <ul>
+                {
+                    filteredNotes.map(note => (
+                        <li key={note.id}>
+                            <Note note={note} />
+                        </li>
+                    ))
+                }
+            </ul>
+        </div>
     )
 }
